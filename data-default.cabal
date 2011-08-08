@@ -1,0 +1,15 @@
+Name:            data-default
+Version:         0.3.0
+Cabal-Version:   >= 1.2
+Category:        Data
+Synopsis:        A class for types with a default value
+Build-Type:      Simple
+License:         BSD3
+License-File:    LICENSE
+Author:          Lukas Mai
+Maintainer:      <l.mai@web.de>
+
+Library
+  Build-Depends:     base >=2 && <5, containers, dlist
+  Exposed-Modules:   Data.Default
+  Ghc-Options:       -Wall -O2
