@@ -9,6 +9,10 @@ import Data.Monoid
 import Data.Ratio
 import qualified Data.Set as S
 import qualified Data.Map as M
+import Data.IntMap (IntMap)
+import Data.IntSet (IntSet)
+import Data.Sequence (Seq)
+import Data.Tree (Tree(..))
 import Data.DList (DList)
 
 -- | A class for types with a default value.
@@ -18,6 +22,10 @@ class Default a where
 
 instance Default (S.Set v) where def = S.empty
 instance Default (M.Map k v) where def = M.empty
+instance Default (IntMap v) where def = mempty
+instance Default IntSet where def = mempty
+instance Default (Seq a) where def = mempty
+instance (Default a) => Default (Tree a) where def = Node def def
 
 instance Default Int where def = 0
 instance Default Integer where def = 0
