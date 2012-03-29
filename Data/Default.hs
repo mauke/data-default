@@ -14,6 +14,7 @@ import Data.IntSet (IntSet)
 import Data.Sequence (Seq)
 import Data.Tree (Tree(..))
 import Data.DList (DList)
+import System.Locale
 
 -- | A class for types with a default value.
 class Default a where
@@ -56,3 +57,5 @@ instance (Default a, Default b) => Default (a, b) where def = (def, def)
 instance (Default a, Default b, Default c) => Default (a, b, c) where def = (def, def, def)
 instance (Default a, Default b, Default c, Default d) => Default (a, b, c, d) where def = (def, def, def, def)
 instance (Default a, Default b, Default c, Default d, Default e) => Default (a, b, c, d, e) where def = (def, def, def, def, def)
+
+instance Default TimeLocale where def = defaultTimeLocale

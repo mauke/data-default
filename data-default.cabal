@@ -10,6 +10,6 @@ Author:          Lukas Mai
 Maintainer:      <l.mai@web.de>
 
 Library
-  Build-Depends:     base >=2 && <5, containers, dlist
+  Build-Depends:     base >=2 && <5, containers, dlist, old-locale
   Exposed-Modules:   Data.Default
   Ghc-Options:       -Wall -O2
