@@ -38,6 +38,7 @@ module Data.Default (
 
 import Data.Monoid
 import Data.Ratio
+import Data.Complex
 import qualified Data.Set as S
 import qualified Data.Map as M
 import Data.IntMap (IntMap)
@@ -64,6 +65,7 @@ instance Default Integer where def = 0
 instance Default Float where def = 0
 instance Default Double where def = 0
 instance (Integral a) => Default (Ratio a) where def = 0
+instance (Default a, RealFloat a) => Default (Complex a) where def = def :+ def
 
 instance (Default r) => Default (e -> r) where def = const def
 instance (Default a) => Default (IO a) where def = return def
