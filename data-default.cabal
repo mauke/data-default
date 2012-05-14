@@ -9,6 +9,10 @@ License-File:    LICENSE
 Author:          Lukas Mai
 Maintainer:      <l.mai@web.de>
 
+source-repository head
+  type: git
+  location: https://github.com/mauke/data-default
+
 Library
   Build-Depends:     base >=2 && <5, containers, dlist, old-locale
   Exposed-Modules:   Data.Default
