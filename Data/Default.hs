@@ -37,6 +37,7 @@ module Data.Default (
 ) where
 
 import Data.Int
+import Data.Word
 import Data.Monoid
 import Data.Ratio
 import Data.Complex
@@ -66,6 +67,11 @@ instance Default Int8 where def = 0
 instance Default Int16 where def = 0
 instance Default Int32 where def = 0
 instance Default Int64 where def = 0
+instance Default Word where def = 0
+instance Default Word8 where def = 0
+instance Default Word16 where def = 0
+instance Default Word32 where def = 0
+instance Default Word64 where def = 0
 instance Default Integer where def = 0
 instance Default Float where def = 0
 instance Default Double where def = 0
