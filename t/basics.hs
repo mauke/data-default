@@ -1,6 +1,8 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
 import Data.Default
+import Data.Int
+import Data.Word
 import Data.Monoid
 import Data.Complex
 import System.Locale
@@ -52,7 +54,7 @@ is    x y = ok (x == y) (printf "%s == %s" (show x) (show y))
 
 main :: IO ()
 main = runTest $ do
-    planTests 27
+    planTests 36
     sequence_ [def, liftIO def, return ()]
     is (def length) (0 :: Int)
     is def ()
@@ -77,6 +79,15 @@ main = runTest $ do
     is def (0 :: Double)
     is def (0 :: Rational)
     is def (0 :: Complex Double)
+    is def (0 :: Int8)
+    is def (0 :: Int16)
+    is def (0 :: Int32)
+    is def (0 :: Int64)
+    is def (0 :: Word)
+    is def (0 :: Word8)
+    is def (0 :: Word16)
+    is def (0 :: Word32)
+    is def (0 :: Word64)
     is def ((def, def) :: ((), Maybe ((), ())))
     is def ((def, def, def) :: ((), Maybe ((), ()), [Ordering]))
     is def ((def, def, def, def) :: ((), Maybe ((), ()), [Ordering], Float))
