@@ -36,6 +36,7 @@ module Data.Default (
     Default(..)
 ) where
 
+import Data.Int
 import Data.Monoid
 import Data.Ratio
 import Data.Complex
@@ -61,6 +62,10 @@ instance Default (Seq a) where def = mempty
 instance (Default a) => Default (Tree a) where def = Node def def
 
 instance Default Int where def = 0
+instance Default Int8 where def = 0
+instance Default Int16 where def = 0
+instance Default Int32 where def = 0
+instance Default Int64 where def = 0
 instance Default Integer where def = 0
 instance Default Float where def = 0
 instance Default Double where def = 0
