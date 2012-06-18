@@ -1,6 +1,6 @@
 Name:            data-default
 Version:         0.4.0
-Cabal-Version:   >= 1.2
+Cabal-Version:   >= 1.6
 Category:        Data
 Synopsis:        A class for types with a default value
 Build-Type:      Simple
