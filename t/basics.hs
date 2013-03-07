@@ -54,7 +54,7 @@ is    x y = ok (x == y) (printf "%s == %s" (show x) (show y))
 
 main :: IO ()
 main = runTest $ do
-    planTests 36
+    planTests 37
     sequence_ [def, liftIO def, return ()]
     is (def length) (0 :: Int)
     is def ()
@@ -91,4 +91,5 @@ main = runTest $ do
     is def ((def, def) :: ((), Maybe ((), ())))
     is def ((def, def, def) :: ((), Maybe ((), ()), [Ordering]))
     is def ((def, def, def, def) :: ((), Maybe ((), ()), [Ordering], Float))
+    is def ((def, def, def, def, def, def, def) :: ((), (), (), (), (), (), ()))
     is def defaultTimeLocale
