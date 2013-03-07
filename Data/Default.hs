@@ -101,5 +101,7 @@ instance (Default a, Default b) => Default (a, b) where def = (def, def)
 instance (Default a, Default b, Default c) => Default (a, b, c) where def = (def, def, def)
 instance (Default a, Default b, Default c, Default d) => Default (a, b, c, d) where def = (def, def, def, def)
 instance (Default a, Default b, Default c, Default d, Default e) => Default (a, b, c, d, e) where def = (def, def, def, def, def)
+instance (Default a, Default b, Default c, Default d, Default e, Default f) => Default (a, b, c, d, e, f) where def = (def, def, def, def, def, def)
+instance (Default a, Default b, Default c, Default d, Default e, Default f, Default g) => Default (a, b, c, d, e, f, g) where def = (def, def, def, def, def, def, def)
 
 instance Default TimeLocale where def = defaultTimeLocale
