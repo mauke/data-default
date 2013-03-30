@@ -28,7 +28,11 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -}
-
+{-# LANGUAGE DefaultSignatures    #-}
+{-# LANGUAGE TypeOperators        #-}
+{-# LANGUAGE FlexibleContexts     #-}
+{-# LANGUAGE TypeSynonymInstances #-}
+{-# LANGUAGE FlexibleInstances    #-}
 module Data.Default (
 -- | This module defines a class for types with a default value. Instances are
 -- provided for '()', 'S.Set', 'M.Map', 'Int', 'Integer', 'Float', 'Double',
@@ -49,11 +53,14 @@ import Data.Sequence (Seq)
 import Data.Tree (Tree(..))
 import Data.DList (DList)
 import System.Locale
+import GHC.Generics
 
 -- | A class for types with a default value.
 class Default a where
     -- | The default value for this type.
     def :: a
+    default def :: (Generic a, GDefault (Rep a)) => a
+    def = to gDef
 
 instance Default (S.Set v) where def = S.empty
 instance Default (M.Map k v) where def = M.empty
@@ -105,3 +112,29 @@ instance (Default a, Default b, Default c, Default d, Default e, Default f) => D
 instance (Default a, Default b, Default c, Default d, Default e, Default f, Default g) => Default (a, b, c, d, e, f, g) where def = (def, def, def, def, def, def, def)
 
 instance Default TimeLocale where def = defaultTimeLocale
+
+-- Generic Default for default implementation
+class GDefault f where
+    gDef :: f a
+    
+instance GDefault U1 where
+    gDef = U1
+
+instance (Datatype d, GDefault a) => GDefault (D1 d a) where
+   gDef = M1 gDef 
+
+instance (Constructor c, GDefault a) => GDefault (C1 c a) where
+   gDef = M1 gDef 
+
+instance (Selector s, GDefault a) => GDefault (S1 s a) where
+   gDef = M1 gDef 
+
+instance (Default a) => GDefault (K1 i a) where
+   gDef = K1 def
+
+instance (GDefault a, GDefault b) => GDefault (a :*: b) where
+   gDef = gDef :*: gDef
+
+instance (GDefault a, GDefault b) => GDefault (a :+: b) where
+   gDef = L1 gDef
+
