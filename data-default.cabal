@@ -1,5 +1,5 @@
 Name:            data-default
-Version:         0.5.1
+Version:         0.5.2
 Cabal-Version:   >= 1.6
 Category:        Data
 Synopsis:        A class for types with a default value
@@ -14,6 +14,6 @@ source-repository head
   location: https://github.com/mauke/data-default
 
 Library
-  Build-Depends:     base >=2 && <5, containers, dlist, old-locale
+  Build-Depends:     base >=2 && <5, containers, dlist, old-locale, ghc-prim
   Exposed-Modules:   Data.Default
   Ghc-Options:       -Wall -O2
