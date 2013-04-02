@@ -1,6 +1,6 @@
 {-
 
-Copyright (c) 2010, 2012 Lukas Mai
+Copyright (c) 2013 Lukas Mai
 
 All rights reserved.
 
@@ -29,38 +29,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -}
 
-module Data.Default (
--- | This module defines a class for types with a default value. Instances are
--- provided for '()', 'S.Set', 'M.Map', 'Int', 'Integer', 'Float', 'Double',
--- and many others (see below).
-    Default(..)
+module Data.Default.Instances.Base (
+-- | This module defines 'Default' instances for the types 'Int', 'Int8',
+-- 'Int16', 'Int32', 'Int64', 'Word', 'Word8', 'Word16', 'Word32', 'Word64',
+-- 'Integer', 'Float', 'Double', 'Ratio', 'Complex', '(->)', 'IO', 'Maybe',
+-- '()', '[]', 'Ordering', 'Any', 'All', 'Last', 'First', 'Sum', 'Product',
+-- 'Endo', 'Dual', and tuples.
 ) where
 
+import Data.Default.Class
 import Data.Int
 import Data.Word
 import Data.Monoid
 import Data.Ratio
 import Data.Complex
-import qualified Data.Set as S
-import qualified Data.Map as M
-import Data.IntMap (IntMap)
-import Data.IntSet (IntSet)
-import Data.Sequence (Seq)
-import Data.Tree (Tree(..))
-import Data.DList (DList)
-import System.Locale
-
--- | A class for types with a default value.
-class Default a where
-    -- | The default value for this type.
-    def :: a
-
-instance Default (S.Set v) where def = S.empty
-instance Default (M.Map k v) where def = M.empty
-instance Default (IntMap v) where def = mempty
-instance Default IntSet where def = mempty
-instance Default (Seq a) where def = mempty
-instance (Default a) => Default (Tree a) where def = Node def def
 
 instance Default Int where def = 0
 instance Default Int8 where def = 0
@@ -94,8 +76,6 @@ instance (Num a) => Default (Sum a) where def = mempty
 instance (Num a) => Default (Product a) where def = mempty
 instance Default (Endo a) where def = mempty
 
-instance Default (DList a) where def = mempty
-
 instance (Default a) => Default (Dual a) where def = Dual def
 instance (Default a, Default b) => Default (a, b) where def = (def, def)
 instance (Default a, Default b, Default c) => Default (a, b, c) where def = (def, def, def)
@@ -103,5 +83,3 @@ instance (Default a, Default b, Default c, Default d) => Default (a, b, c, d) wh
 instance (Default a, Default b, Default c, Default d, Default e) => Default (a, b, c, d, e) where def = (def, def, def, def, def)
 instance (Default a, Default b, Default c, Default d, Default e, Default f) => Default (a, b, c, d, e, f) where def = (def, def, def, def, def, def)
 instance (Default a, Default b, Default c, Default d, Default e, Default f, Default g) => Default (a, b, c, d, e, f, g) where def = (def, def, def, def, def, def, def)
-
-instance Default TimeLocale where def = defaultTimeLocale

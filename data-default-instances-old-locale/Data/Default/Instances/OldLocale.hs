@@ -1,4 +1,6 @@
-Copyright (c) 2010, 2012 Lukas Mai
+{-
+
+Copyright (c) 2013 Lukas Mai
 
 All rights reserved.
 
@@ -24,3 +26,14 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
 ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-}
+
+module Data.Default.Instances.OldLocale (
+-- | This module defines 'Default' instances for the type 'TimeLocale'.
+) where
+
+import Data.Default.Class
+import System.Locale
+
+instance Default TimeLocale where def = defaultTimeLocale
