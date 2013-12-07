@@ -43,6 +43,7 @@ import Data.Word
 import Data.Monoid
 import Data.Ratio
 import Data.Complex
+import Data.Text 
 
 instance Default Int where def = 0
 instance Default Int8 where def = 0
@@ -67,6 +68,7 @@ instance Default (Maybe a) where def = Nothing
 
 instance Default () where def = mempty
 instance Default [a] where def = mempty
+instance Default Text where def = mempty
 instance Default Ordering where def = mempty
 instance Default Any where def = mempty
 instance Default All where def = mempty
