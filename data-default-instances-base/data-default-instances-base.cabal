@@ -14,5 +14,5 @@ source-repository head
   location: https://github.com/mauke/data-default
 
 Library
-  Build-Depends:     base >=2 && <5, data-default-class
+  Build-Depends:     base >=2 && <5, data-default-class, text
   Exposed-Modules:   Data.Default.Instances.Base
