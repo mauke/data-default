@@ -20,18 +20,3 @@ Library
                      data-default-instances-dlist,
                      data-default-instances-old-locale
   Exposed-Modules:   Data.Default
-
-
-Executable main
-  Main-Is:        Main.hs
-  Hs-Source-Dirs: src
-
-  GHC-Options:    -Wall -O2
-
-
-  Build-Depends:  base >=2 && <5, data-default-class,
-                  data-default-instances-base,
-                  data-default-instances-containers,
-                  data-default-instances-dlist,
-                  data-default-instances-old-locale,
-                  data-default
