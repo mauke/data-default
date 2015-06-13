@@ -29,12 +29,26 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -}
 
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE FlexibleInstances     #-}
+{-# LANGUAGE OverlappingInstances  #-}
+
 module Data.Default.Class (
 -- | This module defines a class for types with a default value.
-    Default(..)
+    Default(..),
+    DefaultM(..)
 ) where
 
 -- | A class for types with a default value.
 class Default a where
     -- | The default value for this type.
     def :: a
+
+-- | A class for types with a default value in a monad.
+-- | Each class that is an instance of Default is also an instance of DefaultM
+class DefaultM m a where
+	-- | The default value for this type in a monad.
+	defM :: m a
+
+instance (Monad m, Default a) => DefaultM m a where
+    defM = return def 

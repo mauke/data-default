@@ -1,6 +1,6 @@
 Name:            data-default
-Version:         0.5.2
-Cabal-Version:   >= 1.6
+Version:         0.6
+Cabal-Version:   >= 1.8
 Category:        Data
 Synopsis:        A class for types with a default value
 Build-Type:      Simple
@@ -14,9 +14,24 @@ source-repository head
   location: https://github.com/mauke/data-default
 
 Library
-  Build-Depends:     base >=2 && <5, data-default-class,
+  Build-Depends:     base >=2 && <5, data-default-class >= 0.0.2,
                      data-default-instances-base,
                      data-default-instances-containers,
                      data-default-instances-dlist,
                      data-default-instances-old-locale
   Exposed-Modules:   Data.Default
+
+
+Executable main
+  Main-Is:        Main.hs
+  Hs-Source-Dirs: src
+
+  GHC-Options:    -Wall -O2
+
+
+  Build-Depends:  base >=2 && <5, data-default-class,
+                  data-default-instances-base,
+                  data-default-instances-containers,
+                  data-default-instances-dlist,
+                  data-default-instances-old-locale,
+                  data-default
