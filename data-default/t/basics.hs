@@ -19,7 +19,7 @@ import System.IO
 import Text.Printf.Mauke
 
 newtype Test a = Test{ unTest :: ReaderT (IORef Int) IO a }
-    deriving (Functor, Monad, MonadIO, MonadReader (IORef Int))
+    deriving (Functor, Applicative, Monad, MonadIO, MonadReader (IORef Int))
 
 runTest :: (MonadIO m) => Test a -> m a
 runTest t = liftIO $ do
@@ -56,7 +56,7 @@ main :: IO ()
 main = runTest $ do
     planTests 37
     sequence_ [def, liftIO def, return ()]
-    is (def length) (0 :: Int)
+    is (def (length :: [a] -> Int)) (0 :: Int)
     is def ()
     is def (Nothing :: Maybe (Int, Ordering, [Float]))
     is def ""
