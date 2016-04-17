@@ -34,9 +34,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 module Data.Default.Instances.Base (
 -- | This module defines 'Default' instances for the types 'Int', 'Int8',
 -- 'Int16', 'Int32', 'Int64', 'Word', 'Word8', 'Word16', 'Word32', 'Word64',
--- 'Integer', 'Float', 'Double', 'Ratio', 'Complex', '(->)', 'IO', 'Maybe',
--- '()', '[]', 'Ordering', 'Any', 'All', 'Last', 'First', 'Sum', 'Product',
--- 'Endo', 'Dual', and tuples.
+-- 'Integer', 'Float', 'Double', 'Ratio', 'Complex', 'CShort', 'CUShort',
+-- 'CInt', 'CUInt', 'CLong', 'CULong', 'CLLong', 'CULLong', 'CPtrdiff',
+-- 'CSize', 'CSigAtomic', 'CIntPtr', 'CUIntPtr', 'CIntMax', 'CUIntMax',
+-- 'CClock', 'CTime', 'CUSeconds', 'CSUSeconds', 'CFloat', 'CDouble', '(->)',
+-- 'IO', 'Maybe', '()', '[]', 'Ordering', 'Any', 'All', 'Last', 'First', 'Sum',
+-- 'Product', 'Endo', 'Dual', and tuples.
 ) where
 
 import Data.Default.Class
