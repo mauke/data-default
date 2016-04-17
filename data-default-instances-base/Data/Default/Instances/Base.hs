@@ -29,6 +29,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -}
 
+{-# LANGUAGE CPP #-}
+
 module Data.Default.Instances.Base (
 -- | This module defines 'Default' instances for the types 'Int', 'Int8',
 -- 'Int16', 'Int32', 'Int64', 'Word', 'Word8', 'Word16', 'Word32', 'Word64',
@@ -43,6 +45,7 @@ import Data.Word
 import Data.Monoid
 import Data.Ratio
 import Data.Complex
+import Foreign.C.Types
 
 instance Default Int where def = 0
 instance Default Int8 where def = 0
@@ -59,6 +62,30 @@ instance Default Float where def = 0
 instance Default Double where def = 0
 instance (Integral a) => Default (Ratio a) where def = 0
 instance (Default a, RealFloat a) => Default (Complex a) where def = def :+ def
+
+instance Default CShort     where def = 0
+instance Default CUShort    where def = 0
+instance Default CInt       where def = 0
+instance Default CUInt      where def = 0
+instance Default CLong      where def = 0
+instance Default CULong     where def = 0
+instance Default CLLong     where def = 0
+instance Default CULLong    where def = 0
+instance Default CPtrdiff   where def = 0
+instance Default CSize      where def = 0
+instance Default CSigAtomic where def = 0
+instance Default CIntPtr    where def = 0
+instance Default CUIntPtr   where def = 0
+instance Default CIntMax    where def = 0
+instance Default CUIntMax   where def = 0
+instance Default CClock     where def = 0
+instance Default CTime      where def = 0
+#if MIN_VERSION_base(4, 4, 0)
+instance Default CUSeconds  where def = 0
+instance Default CSUSeconds where def = 0
+#endif
+instance Default CFloat     where def = 0
+instance Default CDouble    where def = 0
 
 instance (Default r) => Default (e -> r) where def = const def
 instance (Default a) => Default (IO a) where def = return def

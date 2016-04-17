@@ -1,5 +1,5 @@
 Name:            data-default-instances-base
-Version:         0.0.1
+Version:         0.1.0
 Cabal-Version:   >= 1.6
 Category:        Data
 Synopsis:        Default instances for types in base
