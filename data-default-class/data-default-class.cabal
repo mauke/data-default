@@ -16,4 +16,3 @@ source-repository head
 Library
   Build-Depends:     base >=2 && <5
   Exposed-Modules:   Data.Default.Class
-  Extensions:        CPP

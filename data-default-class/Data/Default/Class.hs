@@ -29,6 +29,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -}
 
+{-# LANGUAGE CPP #-}
+
 #if __GLASGOW_HASKELL__ >= 706
 {-# LANGUAGE DefaultSignatures, TypeOperators, FlexibleContexts #-}
 #endif
