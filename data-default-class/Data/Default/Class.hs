@@ -29,12 +29,44 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -}
 
+#if __GLASGOW_HASKELL__ >= 706
+{-# LANGUAGE DefaultSignatures, TypeOperators, FlexibleContexts #-}
+#endif
+
 module Data.Default.Class (
 -- | This module defines a class for types with a default value.
     Default(..)
 ) where
 
+#if __GLASGOW_HASKELL__ >= 706
+import GHC.Generics
+#endif
+
 -- | A class for types with a default value.
 class Default a where
     -- | The default value for this type.
     def :: a
+
+#if __GLASGOW_HASKELL__ >= 706
+    default def :: (Generic a, GDefault (Rep a)) => a
+    def = to gdef
+#endif
+
+#if __GLASGOW_HASKELL__ >= 706
+
+class GDefault f where
+    gdef :: f a
+
+instance GDefault U1 where
+    gdef = U1
+
+instance (Default a) => GDefault (K1 i a) where
+    gdef = K1 def
+
+instance (GDefault a, GDefault b) => GDefault (a :*: b) where
+    gdef = gdef :*: gdef
+
+instance (GDefault a) => GDefault (M1 i c a) where
+    gdef = M1 gdef
+
+#endif
