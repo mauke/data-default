@@ -33,7 +33,8 @@ module Data.Default (
 -- | This module defines a class for types with a default value. Instances are
 -- provided for '()', 'S.Set', 'M.Map', 'Int', 'Integer', 'Float', 'Double',
 -- and many others (see below).
-    Default(..)
+    Default(..),
+    DefaultM(..)
 ) where
 
 import Data.Default.Class
