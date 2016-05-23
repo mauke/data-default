@@ -31,13 +31,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 {-# LANGUAGE CPP #-}
 
-#if __GLASGOW_HASKELL__ >= 706
-#define HAVE_GHC_706 1
-#else
-#define HAVE_GHC_706 0
-#endif
+#define HAVE_GHC_GENERICS (__GLASGOW_HASKELL__ >= 704)
 
-#if HAVE_GHC_706
+#if HAVE_GHC_GENERICS
 {-# LANGUAGE DefaultSignatures, TypeOperators, FlexibleContexts #-}
 #endif
 
@@ -46,7 +42,7 @@ module Data.Default.Class (
     Default(..)
 ) where
 
-#if HAVE_GHC_706
+#if HAVE_GHC_GENERICS
 import GHC.Generics
 
 class GDefault f where
@@ -70,7 +66,7 @@ class Default a where
     -- | The default value for this type.
     def :: a
 
-#if HAVE_GHC_706
+#if HAVE_GHC_GENERICS
     default def :: (Generic a, GDefault (Rep a)) => a
     def = to gdef
 #endif

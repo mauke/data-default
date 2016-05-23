@@ -1,6 +1,6 @@
 Name:            data-default-class
-Version:         0.1.0
-Cabal-Version:   >= 1.6
+Version:         0.1.0.1
+Cabal-Version:   >= 1.06
 Category:        Data
 Synopsis:        A class for types with a default value
 Build-Type:      Simple
@@ -15,4 +15,10 @@ source-repository head
 
 Library
   Build-Depends:     base >=2 && <5
+  if impl(ghc == 7.4.*)
+      -- this package provide GHC.Generics support for all GHC
+      -- versions (i.e. starting with GHC 7.4) which support Generics.
+      -- For GHC 7.4 only, however, "GHC.Generics" is provided by
+      -- `ghc-prim` rather than `base`
+      build-depends: ghc-prim
   Exposed-Modules:   Data.Default.Class
