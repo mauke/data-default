@@ -15,4 +15,7 @@ source-repository head
 
 Library
   Build-Depends:     base >=2 && <5
+  if impl(ghc == 7.4.*)
+    -- for GHC.Generics
+    Build-Depends:   ghc-prim
   Exposed-Modules:   Data.Default.Class
