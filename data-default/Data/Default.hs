@@ -37,7 +37,6 @@ module Data.Default (
 ) where
 
 import Data.Default.Class
-import Data.Default.Instances.Base       ()
 import Data.Default.Instances.Containers ()
 import Data.Default.Instances.DList      ()
 import Data.Default.Instances.OldLocale  ()
