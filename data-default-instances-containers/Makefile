@@ -1,6 +1,6 @@
 TESTS = $(wildcard t/*.hs)
 
-.PHONY: config build install docs dist test clean
+.PHONY: config build install install-force docs dist test clean
 .PHONY: build-test clean-test
 
 build: dist/setup-config
@@ -13,6 +13,9 @@ dist/setup-config: *.cabal
 
 install: build
 	cabal install
+
+install-force: build
+	cabal install --force-reinstalls
 
 docs: dist/setup-config
 	cabal haddock
