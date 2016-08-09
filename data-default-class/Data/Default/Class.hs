@@ -50,6 +50,7 @@ module Data.Default.Class (
     Default(..)
 ) where
 
+import Control.Applicative
 import Data.Int
 import Data.Word
 import Data.Monoid
@@ -149,3 +150,6 @@ instance (Default a, Default b, Default c, Default d) => Default (a, b, c, d) wh
 instance (Default a, Default b, Default c, Default d, Default e) => Default (a, b, c, d, e) where def = (def, def, def, def, def)
 instance (Default a, Default b, Default c, Default d, Default e, Default f) => Default (a, b, c, d, e, f) where def = (def, def, def, def, def, def)
 instance (Default a, Default b, Default c, Default d, Default e, Default f, Default g) => Default (a, b, c, d, e, f, g) where def = (def, def, def, def, def, def, def)
+
+instance (Default a) => Default (Const a b) where def = Const def
+instance Default (ZipList a) where def = ZipList def
