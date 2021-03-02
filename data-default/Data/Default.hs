@@ -35,7 +35,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 {-|
 Module      : Data.Default
-Description : A module that a class for types with a default value.
+Description : A module that defines a class for types with a default value.
 Maintainer  : Lukas Mai
 Stability   : experimental
 Portability : POSIX
