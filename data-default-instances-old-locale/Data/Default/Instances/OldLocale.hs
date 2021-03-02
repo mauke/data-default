@@ -29,9 +29,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -}
 
-module Data.Default.Instances.OldLocale (
--- | This module defines 'Default' instances for the type 'TimeLocale'.
-) where
+{-|
+Module      : Data.Default.Default.Instances.OldLocale
+Description : A module that defines 'Default' instances for the type 'TimeLocale'.
+Maintainer  : Lukas Mai
+Stability   : experimental
+Portability : POSIX
+
+This module defines 'Default' instances for the type 'TimeLocale'.
+-}
+module Data.Default.Instances.OldLocale () where
 
 import Data.Default.Class
 import System.Locale

@@ -29,9 +29,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -}
 
-module Data.Default.Instances.DList (
--- | This module defines 'Default' instances for the type 'DList'.
-) where
+{-|
+Module      : Data.Default.Default.Instances.DList
+Description : A module that defines 'Default' instances for the type 'DList'.
+Maintainer  : Lukas Mai
+Stability   : experimental
+Portability : POSIX
+
+This module defines 'Default' instances for the type 'DList'.
+-}
+module Data.Default.Instances.DList () where
 
 import Data.Default.Class
 import Data.DList
