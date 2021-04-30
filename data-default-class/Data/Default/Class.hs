@@ -86,6 +86,17 @@ class Default a where
     def = to gdef
 #endif
 
+-- | A class to specify that complex type with a default wrapped type,
+class Default1 (f :: * -> *) where
+    liftDef :: a -> f a
+
+-- | Create a default value by making use of the 'Default1' instance
+-- and the 'def' function as default for the item(s) wrapped in the object.
+def1 :: (Default1 f, Default a)
+ => f a -- ^ The default object constructed with the 'Default1' and the 'def'
+         -- of the wrapped item.
+def1 = liftDef def
+
 instance Default Int where def = 0
 instance Default Int8 where def = 0
 instance Default Int16 where def = 0
