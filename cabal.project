@@ -1,0 +1,6 @@
+packages: */*.cabal
+
+jobs: $ncpus
+
+program-options
+    ghc-options: -Wall

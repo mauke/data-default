@@ -13,10 +13,11 @@ import qualified Data.IntMap as IM
 import qualified Data.IntSet as IS
 import Data.Tree (Tree(..))
 
+import Control.Monad (when)
 import Control.Monad.Reader
 import Data.IORef
+import System.Exit (exitFailure)
 import System.IO
-import Text.Printf.Mauke
 
 newtype Test a = Test{ unTest :: ReaderT (IORef Int) IO a }
     deriving (Functor, Applicative, Monad, MonadIO, MonadReader (IORef Int))
@@ -37,20 +38,22 @@ withRef f = do
 
 planTests :: Int -> Test ()
 planTests n = liftIO $ do
-    printf "1..%d\n" n
+    putStrLn $ "1.." ++ show n
 
 ok :: Bool -> String -> Test ()
 ok b s = withRef $ \r -> do
     c <- atomicModifyIORef r ((,) =<< succ)
-    printf "%sok %d - %s\n" (if b then "" else "not ") c s
+    putStrLn $ (if b then "" else "not ") ++ "ok " ++ show c ++ " - " ++ s
+    when (not b)
+        exitFailure
 
 is {-, isNot-} :: (Show a, Eq a) => a -> a -> Test ()
-is    x y = ok (x == y) (printf "%s == %s" (show x) (show y))
--- isNot x y = ok (x /= y) (printf "%s /= %s" (show x) (show y))
+is    x y = ok (x == y) (show x ++ " == " ++ show y)
+-- isNot x y = ok (x /= y) (show x ++ " /= " ++ show y)
 
 -- diag :: String -> Test ()
 -- diag s = liftIO $ do
---     printf "# %s\n" s
+--     putStrLn $ "# " ++ s
 
 main :: IO ()
 main = runTest $ do

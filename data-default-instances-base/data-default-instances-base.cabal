@@ -1,18 +1,20 @@
-Name:            data-default-instances-base
-Version:         0.1.0.1
-Cabal-Version:   >= 1.6
-Category:        Data
-Synopsis:        Default instances for types in base
-Build-Type:      Simple
-License:         BSD3
-License-File:    LICENSE
-Author:          Lukas Mai
-Maintainer:      <l.mai@web.de>
+cabal-version:   3.0
+name:            data-default-instances-base
+version:         0.1.0.1
+category:        Data
+synopsis:        Default instances for types in base
+build-type:      Simple
+license:         BSD-3-Clause
+license-file:    LICENSE
+copyright:       (c) 2013 Lukas Mai
+author:          Lukas Mai
+maintainer:      <lukasmai.403+hackage@gmail.com>
 
 source-repository head
-  type: git
-  location: https://github.com/mauke/data-default
+    type: git
+    location: https://github.com/mauke/data-default
 
-Library
-  Build-Depends:     base >=2 && <5, data-default-class >=0.1.2.0
-  Exposed-Modules:   Data.Default.Instances.Base
+library
+    build-depends:     base >=2 && <5, data-default-class ^>=0.1.2.0
+    exposed-modules:   Data.Default.Instances.Base
+    default-language:  Haskell98
