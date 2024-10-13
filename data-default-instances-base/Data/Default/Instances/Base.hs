@@ -34,11 +34,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -}
 
 {-|
-Module      : Data.Default.Default.Instances.Base
-Description : A module that reexports the instance from the 'Data.Default.Class' module.
-Maintainer  : Lukas Mai
-Stability   : experimental
-Portability : POSIX
+Module      : Data.Default.Instances.Base
+Description : A module that reexports the instances from the 'Data.Default.Class' module.
 
 This module reexports the 'Data.Default.Class.Default' instances from the
 'Data.Default.Class' module.

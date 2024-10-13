@@ -36,11 +36,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
 {-|
-Module      : Data.Default.Default.Instances.OldLocale
+Module      : Data.Default.Instances.OldLocale
 Description : A module that defines 'Default' instances for the type 'TimeLocale'.
-Maintainer  : Lukas Mai
-Stability   : experimental
-Portability : POSIX
 
 This module defines 'Default' instances for the type 'TimeLocale'.
 -}

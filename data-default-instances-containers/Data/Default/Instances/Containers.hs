@@ -36,11 +36,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
 {-|
-Module      : Data.Default.Default.Instances.Containers
+Module      : Data.Default.Instances.Containers
 Description : A module that defines 'Default' instances for container types.
-Maintainer  : Lukas Mai
-Stability   : experimental
-Portability : POSIX
 
 This module defines 'Default' instances for the types 'S.Set', 'M.Map',
 'IntMap', 'IntSet', 'Seq', and 'Tree'.
