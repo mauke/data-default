@@ -1,3 +1,5 @@
+*.sw[m-p]
+dist-newstyle/
 *.hi
 *.o
 dist/
