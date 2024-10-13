@@ -37,7 +37,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 {-|
 Module      : Data.Default.Instances.Containers
-Description : A module that defines 'Default' instances for container types.
+Description : Defines 'Default' instances for container types.
 
 This module defines 'Default' instances for the types 'S.Set', 'M.Map',
 'IntMap', 'IntSet', 'Seq', and 'Tree'.

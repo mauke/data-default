@@ -43,7 +43,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 {-|
 Module      : Data.Default.Class
-Description : A module that defines a class for types with a default value.
+Description : Defines a class for types with a default value.
 
 This module defines a class for types with a default value.
 It also defines 'Default' instances for the types 'Int', 'Int8',
