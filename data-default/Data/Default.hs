@@ -33,10 +33,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -}
 
+{-|
+Module      : Data.Default
+Description : Defines a class for types with a default value.
+
+This module defines a class for types with a default value. Instances are
+provided for '()', 'Data.Set.Set', 'Data.Map.Map', 'Int', 'Integer',
+'Float', 'Double', and many others (see below).
+-}
 module Data.Default (
--- | This module defines a class for types with a default value. Instances are
--- provided for '()', 'Data.Set.Set', 'Data.Map.Map', 'Int', 'Integer',
--- 'Float', 'Double', and many others (see below).
     Default(..)
 ) where
 

@@ -35,9 +35,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
-module Data.Default.Instances.OldLocale (
--- | This module defines 'Default' instances for the type 'TimeLocale'.
-) where
+{-|
+Module      : Data.Default.Instances.OldLocale
+Description : Defines 'Default' instances for the type 'TimeLocale'.
+
+This module defines 'Default' instances for the type 'TimeLocale'.
+-}
+module Data.Default.Instances.OldLocale () where
 
 import Data.Default.Class
 import System.Locale

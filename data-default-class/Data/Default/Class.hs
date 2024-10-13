@@ -41,16 +41,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 {-# LANGUAGE DefaultSignatures, TypeOperators, FlexibleContexts #-}
 #endif
 
+{-|
+Module      : Data.Default.Class
+Description : Defines a class for types with a default value.
+
+This module defines a class for types with a default value.
+It also defines 'Default' instances for the types 'Int', 'Int8',
+'Int16', 'Int32', 'Int64', 'Word', 'Word8', 'Word16', 'Word32', 'Word64',
+'Integer', 'Float', 'Double', 'Ratio', 'Complex', 'CShort', 'CUShort',
+'CInt', 'CUInt', 'CLong', 'CULong', 'CLLong', 'CULLong', 'CPtrdiff',
+'CSize', 'CSigAtomic', 'CIntPtr', 'CUIntPtr', 'CIntMax', 'CUIntMax',
+'CClock', 'CTime', 'CUSeconds', 'CSUSeconds', 'CFloat', 'CDouble', '(->)',
+'IO', 'Maybe', '()', '[]', 'Ordering', 'Any', 'All', 'Last', 'First', 'Sum',
+'Product', 'Endo', 'Dual', and tuples.
+-}
 module Data.Default.Class (
--- | This module defines a class for types with a default value.
--- It also defines 'Default' instances for the types 'Int', 'Int8',
--- 'Int16', 'Int32', 'Int64', 'Word', 'Word8', 'Word16', 'Word32', 'Word64',
--- 'Integer', 'Float', 'Double', 'Ratio', 'Complex', 'CShort', 'CUShort',
--- 'CInt', 'CUInt', 'CLong', 'CULong', 'CLLong', 'CULLong', 'CPtrdiff',
--- 'CSize', 'CSigAtomic', 'CIntPtr', 'CUIntPtr', 'CIntMax', 'CUIntMax',
--- 'CClock', 'CTime', 'CUSeconds', 'CSUSeconds', 'CFloat', 'CDouble', '(->)',
--- 'IO', 'Maybe', '()', '[]', 'Ordering', 'Any', 'All', 'Last', 'First', 'Sum',
--- 'Product', 'Endo', 'Dual', and tuples.
     Default(..)
 ) where
 

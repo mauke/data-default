@@ -35,10 +35,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
-module Data.Default.Instances.Containers (
--- | This module defines 'Default' instances for the types 'S.Set', 'M.Map',
--- 'IntMap', 'IntSet', 'Seq', and 'Tree'.
-) where
+{-|
+Module      : Data.Default.Instances.Containers
+Description : Defines 'Default' instances for container types.
+
+This module defines 'Default' instances for the types 'S.Set', 'M.Map',
+'IntMap', 'IntSet', 'Seq', and 'Tree'.
+-}
+module Data.Default.Instances.Containers () where
 
 import Data.Default.Class
 import Data.Monoid (mempty)
