@@ -1,6 +1,6 @@
 cabal-version:   3.0
 name:            data-default-instances-dlist
-version:         0.0.1
+version:         0.0.1.1
 category:        Data
 synopsis:        Default instances for types in dlist
 build-type:      Simple
