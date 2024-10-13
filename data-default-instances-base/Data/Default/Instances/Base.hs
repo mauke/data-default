@@ -35,10 +35,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 {-|
 Module      : Data.Default.Instances.Base
-Description : Reëxports the instances from the 'Data.Default.Class' module.
+Description : Reëxports the instances from the "Data.Default.Class" module.
 
 This module reëxports the 'Data.Default.Class.Default' instances from the
-'Data.Default.Class' module.
+"Data.Default.Class" module.
 -}
 module Data.Default.Instances.Base () where
 
