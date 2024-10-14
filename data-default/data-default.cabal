@@ -3,6 +3,10 @@ name:            data-default
 version:         0.7.1.2
 category:        Data
 synopsis:        A class for types with a default value
+description:
+    This module defines a class for types with a default value. Instances are
+    provided for '()', 'Data.Set.Set', 'Data.Map.Map', 'Int', 'Integer',
+    'Float', 'Double', and many others.
 build-type:      Simple
 license:         BSD-3-Clause
 license-file:    LICENSE
@@ -15,10 +19,10 @@ source-repository head
     location: https://github.com/mauke/data-default
 
 library
-    build-depends:     base >=2 && <5, data-default-class ^>=0.1.2.0,
-                       data-default-instances-containers,
-                       data-default-instances-dlist,
-                       data-default-instances-old-locale
+    build-depends:     base >=2 && <5, data-default-class ^>=0.1.2.1,
+                       data-default-instances-containers ^>=0.1.0.2,
+                       data-default-instances-dlist ^>=0.0.1.1,
+                       data-default-instances-old-locale ^>=0.0.1.1
     exposed-modules:   Data.Default
     default-language:  Haskell98
 

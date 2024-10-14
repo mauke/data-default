@@ -3,6 +3,9 @@ name:            data-default-instances-containers
 version:         0.1.0.2
 category:        Data
 synopsis:        Default instances for types in containers
+description:
+    This module defines 'Default' instances for the types 'S.Set', 'M.Map',
+    'IntMap', 'IntSet', 'Seq', and 'Tree'.
 build-type:      Simple
 license:         BSD-3-Clause
 license-file:    LICENSE
@@ -15,6 +18,6 @@ source-repository head
     location: https://github.com/mauke/data-default
 
 library
-    build-depends:     base >=2 && <5, data-default-class ^>=0.1.2.0, containers
+    build-depends:     base >=2 && <5, data-default-class ^>=0.1.2.0, containers >=0.1 && <0.8
     exposed-modules:   Data.Default.Instances.Containers
     default-language:  Haskell98

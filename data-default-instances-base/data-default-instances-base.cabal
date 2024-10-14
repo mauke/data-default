@@ -3,6 +3,9 @@ name:            data-default-instances-base
 version:         0.1.0.2
 category:        Data
 synopsis:        Default instances for types in base
+description:
+    This module reëxports the 'Data.Default.Class.Default' instances from the
+    "Data.Default.Class" module.
 build-type:      Simple
 license:         BSD-3-Clause
 license-file:    LICENSE

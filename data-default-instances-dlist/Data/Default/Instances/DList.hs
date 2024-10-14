@@ -37,9 +37,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 {-|
 Module      : Data.Default.Instances.DList
-Description : Defines 'Default' instances for the type 'DList'.
+Description : 'Default' instance for the type 'DList'.
 
-This module defines 'Default' instances for the type 'DList'.
+This module defines a 'Default' instance for the type 'DList'.
 -}
 module Data.Default.Instances.DList () where
 

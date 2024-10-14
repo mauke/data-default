@@ -37,9 +37,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 {-|
 Module      : Data.Default.Instances.OldLocale
-Description : Defines 'Default' instances for the type 'TimeLocale'.
+Description : 'Default' instances for the type 'TimeLocale'.
 
-This module defines 'Default' instances for the type 'TimeLocale'.
+This module defines a 'Default' instance for the type 'TimeLocale'.
 -}
 module Data.Default.Instances.OldLocale () where
 

@@ -3,6 +3,8 @@ name:            data-default-instances-dlist
 version:         0.0.1.1
 category:        Data
 synopsis:        Default instances for types in dlist
+description:
+    This module defines a 'Default' instance for the type 'DList'.
 build-type:      Simple
 license:         BSD-3-Clause
 license-file:    LICENSE
@@ -15,6 +17,6 @@ source-repository head
     location: https://github.com/mauke/data-default
 
 library
-    build-depends:     base >=2 && <5, data-default-class ^>=0.1.2.0, dlist
+    build-depends:     base >=2 && <5, data-default-class ^>=0.1.2.0, dlist >=0.1 && <1.1
     exposed-modules:   Data.Default.Instances.DList
     default-language:  Haskell98
