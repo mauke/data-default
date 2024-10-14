@@ -78,9 +78,11 @@ jobs:
     - name: check
       shell: bash
       run: |
+        status=0
         for i in */*.cabal; do
-          ( cd "${i%/*}" && cabal check ) || break
+          ( cd "${i%/*}" && echo "[${i%/*}]" && cabal check ) || status=1
         done
+        exit $status
 
     - name: documentation
       run: cabal haddock all
