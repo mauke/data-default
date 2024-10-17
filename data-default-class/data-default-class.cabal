@@ -1,6 +1,6 @@
 cabal-version:   3.0
 name:            data-default-class
-version:         0.1.2.1
+version:         0.1.2.2
 category:        Data
 synopsis:        A class for types with a default value
 description:
