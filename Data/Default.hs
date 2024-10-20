@@ -42,20 +42,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endif
 
 {-|
-Module      : Data.Default.Class
+Module      : Data.Default
 Description : A class for types with a default value.
 
-This module defines a class for types with a default value.
-It also defines 'Default' instances for the types 'Int', 'Int8',
-'Int16', 'Int32', 'Int64', 'Word', 'Word8', 'Word16', 'Word32', 'Word64',
-'Integer', 'Float', 'Double', 'Ratio', 'Complex', 'CShort', 'CUShort',
-'CInt', 'CUInt', 'CLong', 'CULong', 'CLLong', 'CULLong', 'CPtrdiff',
-'CSize', 'CSigAtomic', 'CIntPtr', 'CUIntPtr', 'CIntMax', 'CUIntMax',
-'CClock', 'CTime', 'CUSeconds', 'CSUSeconds', 'CFloat', 'CDouble', '(->)',
-'IO', 'Maybe', '()', '[]', 'Ordering', 'Any', 'All', 'Last', 'First', 'Sum',
-'Product', 'Endo', 'Dual', and tuples.
+This module defines a class for types with a default value. Instances are
+provided for '()', 'Data.Set.Set', 'Data.Map.Map', 'Int', 'Integer',
+'Float', 'Double', and many others (see below).
 -}
-module Data.Default.Class (
+module Data.Default (
     Default(..)
 ) where
 
@@ -65,6 +59,12 @@ import Data.Monoid
 import Data.Ratio
 import Data.Complex
 import Foreign.C.Types
+import qualified Data.Set as S
+import qualified Data.Map as M
+import Data.IntMap (IntMap)
+import Data.IntSet (IntSet)
+import Data.Sequence (Seq)
+import Data.Tree (Tree(..))
 
 #if HAVE_GHC_GENERICS
 import GHC.Generics
@@ -95,20 +95,20 @@ class Default a where
     def = to gdef
 #endif
 
-instance Default Int where def = 0
-instance Default Int8 where def = 0
-instance Default Int16 where def = 0
-instance Default Int32 where def = 0
-instance Default Int64 where def = 0
-instance Default Word where def = 0
-instance Default Word8 where def = 0
-instance Default Word16 where def = 0
-instance Default Word32 where def = 0
-instance Default Word64 where def = 0
+instance Default Int     where def = 0
+instance Default Int8    where def = 0
+instance Default Int16   where def = 0
+instance Default Int32   where def = 0
+instance Default Int64   where def = 0
+instance Default Word    where def = 0
+instance Default Word8   where def = 0
+instance Default Word16  where def = 0
+instance Default Word32  where def = 0
+instance Default Word64  where def = 0
 instance Default Integer where def = 0
-instance Default Float where def = 0
-instance Default Double where def = 0
-instance (Integral a) => Default (Ratio a) where def = 0
+instance Default Float   where def = 0
+instance Default Double  where def = 0
+instance (Integral a) => Default (Ratio a)               where def = 0
 instance (Default a, RealFloat a) => Default (Complex a) where def = def :+ def
 
 instance Default CShort     where def = 0
@@ -135,21 +135,18 @@ instance Default CSUSeconds where def = 0
 instance Default CFloat     where def = 0
 instance Default CDouble    where def = 0
 
-instance (Default r) => Default (e -> r) where def = const def
-instance (Default a) => Default (IO a) where def = return def
-
 instance Default (Maybe a) where def = Nothing
 
-instance Default () where def = mempty
-instance Default [a] where def = mempty
-instance Default Ordering where def = mempty
-instance Default Any where def = mempty
-instance Default All where def = mempty
-instance Default (Last a) where def = mempty
-instance Default (First a) where def = mempty
-instance (Num a) => Default (Sum a) where def = mempty
+instance Default ()                     where def = mempty
+instance Default [a]                    where def = mempty
+instance Default Ordering               where def = mempty
+instance Default Any                    where def = mempty
+instance Default All                    where def = mempty
+instance Default (Last a)               where def = mempty
+instance Default (First a)              where def = mempty
+instance (Num a) => Default (Sum a)     where def = mempty
 instance (Num a) => Default (Product a) where def = mempty
-instance Default (Endo a) where def = mempty
+instance Default (Endo a)               where def = mempty
 
 instance (Default a) => Default (Dual a) where def = Dual def
 instance (Default a, Default b) => Default (a, b) where def = (def, def)
@@ -158,3 +155,10 @@ instance (Default a, Default b, Default c, Default d) => Default (a, b, c, d) wh
 instance (Default a, Default b, Default c, Default d, Default e) => Default (a, b, c, d, e) where def = (def, def, def, def, def)
 instance (Default a, Default b, Default c, Default d, Default e, Default f) => Default (a, b, c, d, e, f) where def = (def, def, def, def, def, def)
 instance (Default a, Default b, Default c, Default d, Default e, Default f, Default g) => Default (a, b, c, d, e, f, g) where def = (def, def, def, def, def, def, def)
+
+instance Default (S.Set v)               where def = S.empty
+instance Default (M.Map k v)             where def = M.empty
+instance Default (IntMap v)              where def = mempty
+instance Default IntSet                  where def = mempty
+instance Default (Seq a)                 where def = mempty
+instance (Default a) => Default (Tree a) where def = Node def []

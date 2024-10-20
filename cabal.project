@@ -1,4 +1,4 @@
-packages: */*.cabal
+packages: .
 
 jobs: $ncpus
 

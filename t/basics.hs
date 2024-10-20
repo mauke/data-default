@@ -5,7 +5,6 @@ import Data.Int
 import Data.Word
 import Data.Monoid
 import Data.Complex
-import System.Locale
 import qualified Data.Sequence as Seq
 import qualified Data.Map as M
 import qualified Data.Set as S
@@ -57,9 +56,7 @@ is    x y = ok (x == y) (show x ++ " == " ++ show y)
 
 main :: IO ()
 main = runTest $ do
-    planTests 37
-    sequence_ [def, liftIO def, return ()]
-    is (def (length :: [a] -> Int)) (0 :: Int)
+    planTests 35
     is def ()
     is def (Nothing :: Maybe (Int, Ordering, [Float]))
     is def ""
@@ -95,4 +92,3 @@ main = runTest $ do
     is def ((def, def, def) :: ((), Maybe ((), ()), [Ordering]))
     is def ((def, def, def, def) :: ((), Maybe ((), ()), [Ordering], Float))
     is def ((def, def, def, def, def, def, def) :: ((), (), (), (), (), (), ()))
-    is def defaultTimeLocale
