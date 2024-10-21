@@ -98,6 +98,7 @@ class Default a where
     default def :: (Generic a, GDefault (Rep a)) => a
     def = to gdef
 
+instance Default Bool    where def = False
 instance Default Int     where def = 0
 instance Default Int8    where def = 0
 instance Default Int16   where def = 0
@@ -115,6 +116,9 @@ instance (Integral a) => Default (Ratio a)               where def = 0
 instance (Default a, RealFloat a) => Default (Complex a) where def = def :+ def
 instance (HasResolution a) => Default (Fixed a)          where def = 0
 
+#if MIN_VERSION_base(4, 10, 0)
+instance Default CBool      where def = 0
+#endif
 instance Default CShort     where def = 0
 instance Default CUShort    where def = 0
 instance Default CInt       where def = 0
