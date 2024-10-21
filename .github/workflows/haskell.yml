@@ -44,7 +44,7 @@ jobs:
     - name: configure
       run: |
         cabal configure --enable-tests
-        cabal build all --dry-run
+        cabal build --dry-run
 
     - name: restore cabal cache
       uses: actions/cache/restore@v4
@@ -59,7 +59,7 @@ jobs:
     - name: Install dependencies
       # If we had an exact cache hit, the dependencies will be up to date.
       if: steps.cache.outputs.cache-hit != 'true'
-      run: cabal build all --only-dependencies
+      run: cabal build --only-dependencies
 
     - name: save cabal cache
       uses: actions/cache/save@v4
@@ -70,19 +70,13 @@ jobs:
         key: ${{ steps.cache.outputs.cache-primary-key }}
 
     - name: build
-      run: cabal build all
+      run: cabal build
 
     - name: test
-      run: cabal test all
+      run: cabal test
 
     - name: check
-      shell: bash
-      run: |
-        status=0
-        for i in */*.cabal; do
-          ( cd "${i%/*}" && echo "[${i%/*}]" && cabal check ) || status=1
-        done
-        exit $status
+      run: cabal check
 
     - name: documentation
-      run: cabal haddock all
+      run: cabal haddock
