@@ -20,7 +20,7 @@ source-repository head
 
 library
     build-depends:     base >=4.8 && <5, containers >=0.1 && <0.8
-    exposed-modules:   Data.Default
+    exposed-modules:   Data.Default, Data.Default.Internal
     default-language:  Haskell98
 
 test-suite test
