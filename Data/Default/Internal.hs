@@ -155,14 +155,7 @@ instance Default (Proxy a)              where def = mempty
 #if MIN_VERSION_base(4, 16, 0)
 instance (Default a) => Default (Solo a) where def = pure def
 #endif
-
 instance (Default a) => Default (Dual a) where def = Dual def
-instance (Default a, Default b) => Default (a, b) where def = (def, def)
-instance (Default a, Default b, Default c) => Default (a, b, c) where def = (def, def, def)
-instance (Default a, Default b, Default c, Default d) => Default (a, b, c, d) where def = (def, def, def, def)
-instance (Default a, Default b, Default c, Default d, Default e) => Default (a, b, c, d, e) where def = (def, def, def, def, def)
-instance (Default a, Default b, Default c, Default d, Default e, Default f) => Default (a, b, c, d, e, f) where def = (def, def, def, def, def, def)
-instance (Default a, Default b, Default c, Default d, Default e, Default f, Default g) => Default (a, b, c, d, e, f, g) where def = (def, def, def, def, def, def, def)
 
 instance Default (S.Set v)               where def = S.empty
 instance Default (M.Map k v)             where def = M.empty
@@ -170,3 +163,5 @@ instance Default (IntMap v)              where def = mempty
 instance Default IntSet                  where def = mempty
 instance Default (Seq a)                 where def = mempty
 instance (Default a) => Default (Tree a) where def = Node def []
+
+#include "bonus-instances.hs"

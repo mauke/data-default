@@ -1,0 +1,13 @@
+#!/usr/bin/env perl
+use v5.36.0;
+
+my $n = $ARGV[0] // 31;
+
+my @tyvar = 'a1';
+for my $i (2 .. $n) {
+    push @tyvar, "a$i";
+    say <<~_EOT_;
+        instance (${\join ", ", map "Default $_", @tyvar}) => Default (${\join ", ", @tyvar}) where
+            def = (${\join ", ", ('def') x @tyvar})
+        _EOT_
+}
