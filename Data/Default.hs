@@ -34,12 +34,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -}
 
 {-# LANGUAGE CPP #-}
-
-#define HAVE_GHC_GENERICS (__GLASGOW_HASKELL__ >= 704)
-
-#if HAVE_GHC_GENERICS
 {-# LANGUAGE DefaultSignatures, TypeOperators, FlexibleContexts #-}
-#endif
 
 {-|
 Module      : Data.Default
@@ -58,7 +53,14 @@ import Data.Word
 import Data.Monoid
 import Data.Ratio
 import Data.Complex
+import Data.Fixed
 import Foreign.C.Types
+import Data.Proxy
+import Data.Functor.Identity
+import Control.Applicative (Const(..))
+#if MIN_VERSION_base(4, 16, 0)
+import Data.Tuple
+#endif
 import qualified Data.Set as S
 import qualified Data.Map as M
 import Data.IntMap (IntMap)
@@ -66,7 +68,6 @@ import Data.IntSet (IntSet)
 import Data.Sequence (Seq)
 import Data.Tree (Tree(..))
 
-#if HAVE_GHC_GENERICS
 import GHC.Generics
 
 class GDefault f where
@@ -83,17 +84,14 @@ instance (GDefault a, GDefault b) => GDefault (a :*: b) where
 
 instance (GDefault a) => GDefault (M1 i c a) where
     gdef = M1 gdef
-#endif
 
 -- | A class for types with a default value.
 class Default a where
     -- | The default value for this type.
     def :: a
 
-#if HAVE_GHC_GENERICS
     default def :: (Generic a, GDefault (Rep a)) => a
     def = to gdef
-#endif
 
 instance Default Int     where def = 0
 instance Default Int8    where def = 0
@@ -110,6 +108,7 @@ instance Default Float   where def = 0
 instance Default Double  where def = 0
 instance (Integral a) => Default (Ratio a)               where def = 0
 instance (Default a, RealFloat a) => Default (Complex a) where def = def :+ def
+instance (HasResolution a) => Default (Fixed a)          where def = 0
 
 instance Default CShort     where def = 0
 instance Default CUShort    where def = 0
@@ -128,14 +127,14 @@ instance Default CIntMax    where def = 0
 instance Default CUIntMax   where def = 0
 instance Default CClock     where def = 0
 instance Default CTime      where def = 0
-#if MIN_VERSION_base(4, 4, 0)
 instance Default CUSeconds  where def = 0
 instance Default CSUSeconds where def = 0
-#endif
 instance Default CFloat     where def = 0
 instance Default CDouble    where def = 0
 
 instance Default (Maybe a) where def = Nothing
+instance (Default a) => Default (Identity a) where def = Identity def
+instance (Default a) => Default (Const a b)  where def = Const def
 
 instance Default ()                     where def = mempty
 instance Default [a]                    where def = mempty
@@ -147,6 +146,10 @@ instance Default (First a)              where def = mempty
 instance (Num a) => Default (Sum a)     where def = mempty
 instance (Num a) => Default (Product a) where def = mempty
 instance Default (Endo a)               where def = mempty
+instance Default (Proxy a)              where def = mempty
+#if MIN_VERSION_base(4, 16, 0)
+instance (Default a) => Default (Solo a) where def = pure def
+#endif
 
 instance (Default a) => Default (Dual a) where def = Dual def
 instance (Default a, Default b) => Default (a, b) where def = (def, def)

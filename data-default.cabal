@@ -19,13 +19,13 @@ source-repository head
     location: https://github.com/mauke/data-default
 
 library
-    build-depends:     base >=2 && <5, containers >=0.1 && <0.8
+    build-depends:     base >=4.8 && <5, containers >=0.1 && <0.8
     exposed-modules:   Data.Default
     default-language:  Haskell98
 
 test-suite test
     type:              exitcode-stdio-1.0
     main-is:           basics.hs
-    build-depends:     base >=2 && <5, containers, data-default, mtl
+    build-depends:     base, containers, data-default, mtl
     hs-source-dirs:    t
     default-language:  Haskell98
