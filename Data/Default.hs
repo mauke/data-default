@@ -82,6 +82,9 @@ instance (Default a) => GDefault (K1 i a) where
 instance (GDefault a, GDefault b) => GDefault (a :*: b) where
     gdef = gdef :*: gdef
 
+instance (GDefault a) => GDefault (a :+: b) where
+    gdef = L1 gdef
+
 instance (GDefault a) => GDefault (M1 i c a) where
     gdef = M1 gdef
 
