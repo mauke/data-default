@@ -51,6 +51,10 @@ import Data.Ratio
 import Data.Complex
 import Data.Fixed
 import Foreign.C.Types
+#if MIN_VERSION_base(4, 18, 0)
+import Foreign.C.ConstPtr
+#endif
+import Foreign.Ptr
 import Data.Proxy
 import Data.Functor.Identity
 import Control.Applicative (Const(..))
@@ -140,6 +144,14 @@ instance Default CUSeconds  where def = 0
 instance Default CSUSeconds where def = 0
 instance Default CFloat     where def = 0
 instance Default CDouble    where def = 0
+
+instance Default (Ptr a)      where def = nullPtr
+instance Default (FunPtr a)   where def = nullFunPtr
+instance Default IntPtr       where def = ptrToIntPtr def
+instance Default WordPtr      where def = ptrToWordPtr def
+#if MIN_VERSION_base(4, 18, 0)
+instance Default (ConstPtr a) where def = ConstPtr def
+#endif
 
 instance Default (Maybe a) where def = Nothing
 instance (Default a) => Default (Identity a) where def = Identity def
