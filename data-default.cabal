@@ -24,8 +24,8 @@ library
     default-language:  Haskell98
 
 test-suite test
-    type:              detailed-0.9
-    test-module:       Basics
-    build-depends:     base, containers, data-default, Cabal >=1.9.2, mtl
+    type:              exitcode-stdio-1.0
+    main-is:           basics.hs
+    build-depends:     base, containers, data-default, mtl
     hs-source-dirs:    t
     default-language:  Haskell98
