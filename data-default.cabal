@@ -5,7 +5,7 @@ category:        Data
 synopsis:        A class for types with a default value
 description:
     This module defines a class for types with a default value. Instances are
-    provided for '()', 'Data.Set.Set', 'Data.Map.Map', 'Int', 'Integer',
+    provided for @()@, 'Data.Set.Set', 'Data.Map.Map', 'Int', 'Integer',
     'Float', 'Double', and many others.
 build-type:      Simple
 license:         BSD-3-Clause
