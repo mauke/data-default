@@ -1,5 +1,10 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE BangPatterns #-}
 
+module Basics (tests) where
+
+import qualified Distribution.TestSuite as C
+import Control.Monad.State.Strict
 import Data.Default
 import Data.Int
 import Data.Word
@@ -12,51 +17,40 @@ import qualified Data.IntMap as IM
 import qualified Data.IntSet as IS
 import Data.Tree (Tree(..))
 
-import Control.Monad (when)
-import Control.Monad.Reader
-import Data.IORef
-import System.Exit (exitFailure)
-import System.IO
+data TestInstance = TestInstance
+    { result :: Maybe String
+    , name :: String
+    }
 
-newtype Test a = Test{ unTest :: ReaderT (IORef Int) IO a }
-    deriving (Functor, Applicative, Monad, MonadIO, MonadReader (IORef Int))
-
-runTest :: (MonadIO m) => Test a -> m a
-runTest t = liftIO $ do
-    hSetBuffering stdout LineBuffering
-    r <- newIORef 1
-    runReaderT (unTest t) r
-
-instance (Default a) => Default (Test a) where
-    def = return def
-
-withRef :: (IORef Int -> IO a) -> Test a
-withRef f = do
-    r <- ask
-    liftIO (f r)
-
-planTests :: Int -> Test ()
-planTests n = liftIO $ do
-    putStrLn $ "1.." ++ show n
+newtype Test a = MkTest (State (Int, [TestInstance]) a)
+    deriving (Functor, Applicative, Monad, MonadState (Int, [TestInstance]))
 
 ok :: Bool -> String -> Test ()
-ok b s = withRef $ \r -> do
-    c <- atomicModifyIORef r ((,) =<< succ)
-    putStrLn $ (if b then "" else "not ") ++ "ok " ++ show c ++ " - " ++ s
-    when (not b)
-        exitFailure
+ok r n = do
+    (c, ts) <- get
+    let !c' = c + 1
+        t = TestInstance
+            { result = if r then Nothing else Just n
+            , name = shows c' $ " # " ++ n
+            }
+    put (c', t : ts)
 
-is {-, isNot-} :: (Show a, Eq a) => a -> a -> Test ()
-is    x y = ok (x == y) (show x ++ " == " ++ show y)
--- isNot x y = ok (x /= y) (show x ++ " /= " ++ show y)
+is :: (Show a, Eq a) => a -> a -> Test ()
+is g e = ok (g == e) (show g ++ " == " ++ show e)
 
--- diag :: String -> Test ()
--- diag s = liftIO $ do
---     putStrLn $ "# " ++ s
+execTest :: Test a -> [C.TestInstance]
+execTest (MkTest t) = map wrap . reverse . snd $ execState t (0, [])
+    where
+    wrap TestInstance{ result = r, name = n } = C.TestInstance
+        { C.run       = pure $ C.Finished (maybe C.Pass C.Fail r)
+        , C.name      = n
+        , C.tags      = def
+        , C.options   = def
+        , C.setOption = \k _ -> Left ("bad option: " ++ show k)
+        }
 
-main :: IO ()
-main = runTest $ do
-    planTests 35
+tests :: IO [C.Test]
+tests = pure . map C.Test . execTest $ do
     is def ()
     is def (Nothing :: Maybe (Int, Ordering, [Float]))
     is def ""
