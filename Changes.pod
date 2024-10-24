@@ -1,0 +1,305 @@
+=head1 Version history for C<data-default>
+
+=over
+
+=item 0.8.0.0
+
+Release date: 2024-10-23
+
+=over
+
+=item *
+
+The split into multiple packages (C<data-default-class>,
+C<data-default-instances-*>) is gone. There is only C<data-default> now (with
+no dependencies on C<data-default-class> or anything).
+
+=item *
+
+C<data-default> only depends on C<containers> and C<base> now (but requires C<<
+base >= 4.8 >>).
+
+=item *
+
+The C<Default> instances for C<Data.DList> and C<System.Locale> are gone (but
+could be revived with updated versions of C<data-default-instances-dlist> and
+C<data-default-instances-old-locale> in the future?).
+
+=item *
+
+The C<Default> instances for C<< e -> a >> and C<IO a> have been removed.
+
+=item *
+
+The "generic" default C<Default> instance now supports sum types as well (by
+always choosing the left constructor).
+
+=item *
+
+The internal C<GDefault> type is now semi-public (in the
+C<Data.Default.Internal> module) and has stub documentation.
+
+=item *
+
+New instances:
+
+=over
+
+=item *
+
+Tuples of size up to 31 (previously 7)
+
+=item *
+
+C<Identity>
+
+=item *
+
+C<Const>
+
+=item *
+
+C<Proxy>
+
+=item *
+
+C<Solo>
+
+=item *
+
+C<Bool>
+
+=item *
+
+C<CBool>
+
+=item *
+
+C<Ptr>
+
+=item *
+
+C<ConstPtr>
+
+=item *
+
+C<FunPtr>
+
+=item *
+
+C<IntPtr>
+
+=item *
+
+C<WordPtr>
+
+=back
+
+=back
+
+=item 0.7.1.3
+
+Release date: 2024-10-17
+
+=over
+
+=item *
+
+Add upper version bounds on all dependencies.
+
+=item *
+
+Add cabal description.
+
+=back
+
+=item 0.7.1.2
+
+Release date: 2024-10-13
+
+=over
+
+=item *
+
+Add proper haddock module headers in each module.
+
+=item *
+
+Update F<.cabal> file to C<cabal-version: 3.0> format.
+
+=item *
+
+No changes to the license itself, but keep the wording/formatting consistent in
+all license files/headers/tags.
+
+=item *
+
+Make the (rudimentary) test runnable by cabal and add it to the F<.cabal> file.
+
+=back
+
+=item 0.7.1.1
+
+Release date: 2016-06-25
+
+=over
+
+=item *
+
+Remove C<data-default-instances-base> dependency.
+
+=back
+
+=item 0.7.1
+
+Release date: 2016-06-12
+
+=over
+
+=item *
+
+Support C<GHC.Generics> in ghc 7.4 (previously: 7.6+).
+
+=back
+
+=item 0.7.0
+
+Release date: 2016-05-21
+
+=over
+
+=item *
+
+Add instances for the numeric types from C<Foreign.C.Types>.
+
+=back
+
+=item 0.6.0
+
+Release date: 2016-04-17
+
+=over
+
+=item *
+
+Add support for C<GHC.Generics> in ghc 7.6+.
+
+=back
+
+=item 0.5.2
+
+Release date: 2016-04-02
+
+=over
+
+=item *
+
+Split code into several packages (C<data-default-class>,
+C<data-default-instances-*>), which C<data-default> simply re-exports.
+
+=back
+
+=item 0.5.1
+
+Release date: 2013-03-07
+
+=over
+
+=item *
+
+Add instances for tuples of length 6 and 7.
+
+=back
+
+=item 0.5.0
+
+Release date: 2012-06-18
+
+=over
+
+=item *
+
+Add instances for types in C<Data.Int> and C<Data.Word>.
+
+=back
+
+=item 0.4.0
+
+Release date: 2012-03-30
+
+=over
+
+=item *
+
+Add C<Complex> instance.
+
+=item *
+
+Add C<TimeLocale> instance (from C<old-locale>).
+
+=back
+
+=item 0.3.0
+
+Release date: 2011-08-08
+
+=over 
+
+=item *
+
+Add instances for C<IntMap>, C<IntSet>, C<Seq>, and C<Tree> (from
+C<containers>).
+
+=item *
+
+Add internal basic tests.
+
+=item *
+
+Track changes in git.
+
+=item *
+
+Add instances for C<Ordering>, C<All>, C<Any>, C<Dual>, C<Endo>, C<Sum>,
+C<Product>. C<First>, C<Last>, C<DList>.
+
+=item *
+
+Add instances for tuples of length 2 to 5.
+
+=back
+
+=item 0.2.0.1
+
+Release date: 2011-01-02
+
+=over
+
+=item *
+
+Add F<LICENSE> file.
+
+=item *
+
+Add version bounds on C<base> dependency.
+
+=back
+
+=item 0.2 (first version)
+
+Release date: 2008-05-21
+
+=over
+
+=item *
+
+Initial upload.
+
+=item *
+
+Instances provided: C<Double>, C<Float>, C<Int>, C<Integer>, C<()>, C<[a]>,
+C<Ratio>, C<IO>, C<Maybe>, C<Set>, C<< e -> a >>, C<Map>.
+
+=back
+
+=back
