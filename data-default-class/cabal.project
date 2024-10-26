@@ -1,0 +1,6 @@
+packages: .
+
+jobs: $ncpus
+
+program-options
+    ghc-options: -Wall
