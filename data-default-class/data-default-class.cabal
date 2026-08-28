@@ -19,6 +19,6 @@ source-repository head
     branch: flare
 
 library
-    build-depends:     data-default ^>=0.8
+    build-depends:     base >=4.8 && <5, data-default ^>=0.8
     exposed-modules:   Data.Default.Class
     default-language:  Haskell98
