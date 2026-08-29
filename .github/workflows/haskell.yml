@@ -11,6 +11,8 @@ jobs:
       fail-fast: false
       matrix:
         ghc-version:
+          - '9.14'
+          - '9.12'
           - '9.10'
           - '9.8'
           - '9.6'
